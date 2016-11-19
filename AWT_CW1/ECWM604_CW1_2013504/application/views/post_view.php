@@ -1,58 +1,50 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-                <link rel="stylesheet" type="text/css" href= "http://localhost/ECWM604_CW1_2013504/css/bootstrap.css">
-                <link rel="stylesheet" type="text/css" href= "http://localhost/ECWM604_CW1_2013504/css/bootstrap-grid.css">
+        <link rel="stylesheet" type="text/css" href= "http://localhost/ECWM604_CW1_2013504/css/bootstrap.css">
         <link rel="stylesheet" href="http://localhost/ECWM604_CW1_2013504/css/bootstrap.min.css">
-  <script src="http://localhost/ECWM604_CW1_2013504/css/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                <title>Posts</title>
+        <script src="http://localhost/ECWM604_CW1_2013504/css/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Posts</title>
     </head>
     <body>
+        <?php include_once('header.php');?>
         <div class="container">
-        <div class="well">
-            <center><h1>PostIt</h1></center>
-            
-        <div class="row">
-            
-        <div class="span12">
-                <?php 
-                    foreach($records as $rec):
-                        //echo $rec->post_id."   ".$rec->username."   ".$rec->link."   ".$rec->description."<br/>";
-                        //echo $rec->comment_id."   ".$rec->post_id."   ".$rec->comment."   ";
-                                        //echo $rec->comment_id."   ".$rec->post_id."   ".$rec->comment."   ";
-                        //echo $rec->comment_id."   ".$rec->post_id."   ".$rec->comment."   ";
-                ?>
-            <div class="row">
-                <h4><?=$rec->username?></h4>
+            <div class="well">
+                <div class="row">
+                    <div class="span12">
+                        <?php foreach ($records as $rec):?>
+                            <div class="row">
+                                <div class="col-lg-1"><input type="image" src="http://localhost/ECWM604_CW1_2013504/images/up-arrow1.png" alt="Submit"></div>
+                                <div class="col-lg-11"><h4><?= $rec->username ?></h4></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-1"><h5><?= $rec->vote_count ?></h5></div> 
+                                <div class="col-lg-11"><h5><a href="  <?= $rec->link ?>"><?= $rec->link ?></a></h5></div> 
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-1"><input type="image" src="http://localhost/ECWM604_CW1_2013504/images/down-arrow1.png" alt="Submit"></div>
+                                <div class="col-lg-11">
+                                    <p><?= $rec->description ?></p>
+                                </div>
+                            </div>  
+                            <div>
+                                <button type="button" class="btn btn-default active">View Comments</button>
+                            </div>
+                            <hr>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3"><center><button type="button" class="btn btn-default btn-lg active">Add Post</button></center></div>
+                    <div class="col-lg-3"><center><button type="button" class="btn btn-default btn-lg active">More Posts</button></center></div>
+                </div>
+
             </div>
-            <div class="row">
-                <div class="col-lg-1"><p><?=$rec->vote_count?></p></div> 
-                <div class="col-lg-11"><p><a href="<?=$rec->link?>"><?=$rec->link?></a></p></div> 
-            </div>
-            <div class="row">
-                <blockquote class="blockquote">
-                    <p><?=$rec->description?>   </p>
-                </blockquote>
-                <hr>
-            </div>  
-            <?php endforeach;?>
-             <div class="row">
-                <div class="col-lg-4" style="background-color:lavender;">.col-sm-4</div>
-                <div class="col-lg-4" style="background-color:lavenderblush;">.col-sm-4</div>
-                <div class="col-lg-4" style="background-color:lavender;">.col-sm-4</div>
-            </div>
-        </div>
-           
-        </div>
-             
-        </div>
-            
+
         </div> 
-        
+
     </body>
-    
-    
-    
-    
+
 </html>

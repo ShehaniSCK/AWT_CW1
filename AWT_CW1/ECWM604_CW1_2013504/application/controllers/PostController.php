@@ -1,29 +1,31 @@
 <?php
-class PostController extends CI_Controller{
-    public function index(){
+
+class PostController extends CI_Controller {
+
+    public function index() {
         $this->load->model('PostModel');
         $this->getAllPosts();
     }
-    
-    public function getAllPosts(){ 
+
+    public function getAllPosts() {
         $data['records'] = $this->PostModel->getPosts();
         $this->load->view('post_view', $data);
     }
-    
-    public function creatPost(){
+
+    public function creatPost() {
         $username = "Kalapuge";
         $link = "http://buzzfeed.com";
         $description = "Buzzfeed Site";
-        
+
         $this->PostModel->createPost($username, $link, $description);
     }
-    
-    public function getComments(){ 
+
+    public function getComments() {
         $data['records'] = $this->PostModel->getAllComments(2);
         $this->load->view('post_view', $data);
     }
-    
-    public function getVoteCount(){ 
+
+    public function getVoteCount() {
         $data['records'] = $this->PostModel->getAllComments(2);
         $this->load->view('post_view', $data);
     }
